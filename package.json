@@ -1,0 +1,25 @@
+{
+  "name": "jsfunctionalprogramming",
+  "version": "1.0.0",
+  "description": "Functional Programming in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gergob/jsFunctionalProgramming.git"
+  },
+  "keywords": [
+    "javascript",
+    "node",
+    "functional",
+    "programming"
+  ],
+  "author": "Gergo Bogdan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gergob/jsFunctionalProgramming/issues"
+  },
+  "homepage": "https://github.com/gergob/jsFunctionalProgramming#readme"
+}
