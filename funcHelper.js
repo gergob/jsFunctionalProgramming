@@ -1,9 +1,11 @@
+"use strict"
+
 function isNumber(n) {
     return isFinite(n) && +n === n;
 }
 
 function isFunction(fn) {
-    return typeof callback === 'function';
+    return typeof fn === 'function';
 }
 
 function areNumbers(numbers) {
@@ -19,7 +21,7 @@ function funcFor(first, last, step, callback) {
     if (!areNumbers([first,last,step])) {
         throw 'first/last/step should be finite numbers.';
     }
-    if (isFunction(callback)) {
+    if (!isFunction(callback)) {
         throw 'callback should be a function, with a single index parameter.';
     }
     if (step === 0) {
@@ -55,6 +57,16 @@ function funcForEach(items, fn) {
     });
 }
 
+function filter(items, fn) {
+    let result = [];
+    funcForEach(items, function(item) {
+        if(fn(item)) {
+          result.push(item);
+        }
+    });
+    return result;
+}
+
 function funcMap(items, fn) {
     let result = [];
     funcForEach(items, function(item) {
@@ -63,9 +75,27 @@ function funcMap(items, fn) {
     return result;
 }
 
+function applyIfAllNumbers(items, fn) {
+    if(areNumbers(items)) {
+        return funcMap(items, fn);
+    }
+    return [];
+}
+
+function applyForNumbersOnly(items, fn) {
+    let numbers = filter(items, isNumber);
+    return funcMap(numbers, fn);
+}
+
+
 module.exports = {
-    pow: pow,
+    areNumbers: areNumbers,
+    applyForNumbersOnly: applyForNumbersOnly,
+    applyIfAllNumbers: applyIfAllNumbers,
+    filter: filter,
     for: funcFor,
     forEach: funcForEach,
+    isNumber: isNumber,
     map: funcMap,
+    pow: pow
 }
