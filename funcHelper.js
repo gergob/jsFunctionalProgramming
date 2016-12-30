@@ -56,7 +56,7 @@ function funcForEach(items, fn) {
 }
 
 function funcMap(items, fn) {
-    var result = [];
+    let result = [];
     funcForEach(items, function(item) {
         result.push(fn(item));
     });
