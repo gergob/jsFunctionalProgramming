@@ -16,6 +16,7 @@ function mersenneNumber(power) {
 }
 
 function isPrime(num) {
+    let result = true;
     if (num === 2 || num === 3) {
     	return true;
     }
@@ -23,12 +24,15 @@ function isPrime(num) {
     	return false;
     }
     let max = Math.ceil(Math.sqrt(num));
-    for (let i = 3; i <= max; i += 2) {
-        if (num % i === 0) {
-            return false;
-        }
-    }
-    return true;
+    
+    funcHelper.for(3, max, 2, function(val) {
+      if (num % val === 0) {
+          result = false;
+          return;
+      }
+    });
+
+    return result;
 }
 
 
