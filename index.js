@@ -25,3 +25,6 @@ funcHelper.forEach(x, function(item) {
 
 console.log(res);
 console.log(funcHelper.map([1,2,3,4], function(x) { return 2*x;}));
+
+
+console.log(funcPrime.isPrime(7));
