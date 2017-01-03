@@ -12,8 +12,10 @@ function areNumbers(numbers) {
     if (numbers.length === 0) {
         return true;
     }
-
-    return isNumber(numbers[0]) && areNumbers(numbers.slice(1));
+    else {
+        return isNumber(numbers[0])
+               && areNumbers(numbers.slice(1));
+    }
 }
 
 function funcFor(first, last, step, callback) {
@@ -43,12 +45,20 @@ function funcFor(first, last, step, callback) {
     inner(first);
 }
 
+function powTCO(result, base, power) {
+  if (power === 0) {
+      return 1;
+  }
+  else if(power === 1) {
+      return result;
+  }
+  else {
+      return powTCO(result * base, base, power - 1);
+  }
+}
 
 function pow(base, power) {
-    if (power === 0) {
-        return 1;
-    }
-    return base * pow(base, power - 1);
+    return powTCO(base, base, power);
 }
 
 function funcForEach(items, fn) {
