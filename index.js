@@ -3,7 +3,7 @@ const funcPrime = require('./funcPrime');
 const funcHelper = require('./funcHelper');
 
 console.log('Hello Functional Programming in JS');
-
+console.log(funcHelper.pow(3,4));
 // console.log(funcPrime.mersenneNumber(2));
 // console.log(funcPrime.mersenneNumber(3));
 // console.log(funcPrime.mersenneNumber(5));
