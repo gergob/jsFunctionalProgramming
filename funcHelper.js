@@ -45,20 +45,31 @@ function funcFor(first, last, step, callback) {
     inner(first);
 }
 
-function powTCO(result, base, power) {
-  if (power === 0) {
-      return 1;
-  }
-  else if(power === 1) {
-      return result;
-  }
-  else {
-      return powTCO(result * base, base, power - 1);
-  }
+function powES6(base, power, result=base) {
+    if (power === 0) {
+        return 1;
+    }
+
+    if (power === 1) {
+        return result;
+    }
+
+    return powES6(base, power - 1, result * base);
+}
+
+function recursivePow(base, power, result) {
+    if (power === 0) {
+        return 1;
+    }
+    else if(power === 1) {
+        return result;
+    }
+
+    return recursivePow(base, power - 1, result * base);
 }
 
 function pow(base, power) {
-    return powTCO(base, base, power);
+    return recursivePow(base, power, base);
 }
 
 function funcForEach(items, fn) {
