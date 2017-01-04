@@ -118,5 +118,6 @@ module.exports = {
     forEach: funcForEach,
     isNumber: isNumber,
     map: funcMap,
-    pow: pow
+    pow: pow,
+    powES6: powES6
 }

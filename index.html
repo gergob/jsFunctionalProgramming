@@ -8,26 +8,58 @@
     <p>Please check developer console for results</p>
 
     <script type="text/javascript">
-    var i = 1;
-    function powTCO(result, base, power) {
-      if (power === 0) {
-          return 1;
-      }
-      else if(power === 1) {
-          return result;
-      }
-      else {
-          ++i;
-          return powTCO(result * base, base, power - 1);
-      }
-    }
+        function recursivePow(base, power, result) {
+            if (power === 0) {
+                return 1;
+            }
+            else if(power === 1) {
+                return result;
+            }
 
-    function pow(base, power) {
-        return powTCO(base, base, power);
-    }
-    //13969
-    console.error(pow(1, 36252));
-    console.error(i);
+            return recursivePow(base, power - 1, result * base);
+        }
+
+        function pow(base, power) {
+            return recursivePow(base, power, base);
+        }
+
+        function stressPow(n) {
+            var result = [];
+            for (var i=0; i<n; ++i) {
+                result.push(
+                  pow(2, 0),
+                  pow(2, 1),
+                  pow(2, 2),
+                  pow(2, 3),
+                  pow(2, 4),
+                  pow(2, 5),
+                  pow(2, 10),
+                  pow(2, 20),
+                  pow(2, 30),
+                  pow(1, 10000),
+                  pow(2, 40),
+                  pow(3, 10),
+                  pow(4, 15),
+                  pow(1, 11000),
+                  pow(3.22, 125),
+                  pow(3.1415, 89),
+                  pow(7, 2500),
+                  pow(2, 13000)
+                );
+            }
+
+            return result;
+        }
+
+        //13969
+        //36252
+        var start = new Date().getTime();
+        var result_standard = stressPow(2500);
+        var duration = new Date().getTime() - start;
+        console.log(result_standard);
+        console.log(`Duration: ${duration} ms.`);
+
+
     </script>
   </body>
 </html>
