@@ -53,10 +53,10 @@
 
         //13969
         //36252
-        var start = new Date().getTime();
+        var start = performance.now();
         var result_standard = stressPow(2500);
-        var duration = new Date().getTime() - start;
-        console.log(result_standard);
+        var duration = performance.now() - start;
+        //console.log(result_standard);
         console.log(`Duration: ${duration} ms.`);
 
 
